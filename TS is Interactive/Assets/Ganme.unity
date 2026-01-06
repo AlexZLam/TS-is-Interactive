@@ -146,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80a5d777543b63048b53b31fd79489a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.07
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80a5d777543b63048b53b31fd79489a3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -154,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80a5d777543b63048b53b31fd79489a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.76
+      value: -0.64
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80a5d777543b63048b53b31fd79489a3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 1406080051}
   - component: {fileID: 1406080050}
   - component: {fileID: 1406080049}
+  - component: {fileID: 1406080052}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -349,7 +350,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 25.734083
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -364,7 +365,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -390,13 +391,57 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406080048}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.00000022542818, y: 0.495, z: -0.338}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 1687854337}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1406080052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406080048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1687854333
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +455,10 @@ GameObject:
   - component: {fileID: 1687854335}
   - component: {fileID: 1687854334}
   - component: {fileID: 1687854338}
-  m_Layer: 0
+  - component: {fileID: 1687854339}
+  - component: {fileID: 1687854341}
+  - component: {fileID: 1687854340}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,6 +555,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6953103}
+  - {fileID: 1406080051}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1687854338
@@ -536,6 +585,163 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 72
   m_CollisionDetection: 0
+--- !u!114 &1687854339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687854333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fed801c79bc7c4387ddc81ed48be4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castingMask:
+    serializedVersion: 2
+    m_Bits: 0
+  cameraTx: {fileID: 1406080051}
+  playerGFX: {fileID: 0}
+  useLocalInputs: 1
+  axisLookHorzizontal: Mouse X
+  axisLookVertical: Mouse Y
+  axisMoveHorzizontal: Horizontal
+  axisMoveVertical: Vertical
+  keyRun: 304
+  keyCrouch: 306
+  keyJump: 32
+  keySlide: 102
+  keyToggleCursor: 96
+  inputLookX: 0
+  inputLookY: 0
+  inputMoveX: 0
+  inputMoveY: 0
+  inputKeyRun: 0
+  inputKeyCrouch: 0
+  inputKeyDownJump: 0
+  inputKeyDownSlide: 0
+  inputKeyDownCursor: 0
+  mouseSensitivityX: 2
+  mouseSensitivityY: 2
+  mouseSnappiness: 20
+  invertLookY: 0
+  clampLookY: 90
+  crouchSpeed: 3
+  walkSpeed: 7
+  runSpeed: 12
+  slideSpeed: 14
+  slideDuration: 2.2
+  gravity: -9.81
+  jumpHeight: 2.5
+  groundCheckY: 0.33
+  ceilingCheckY: 1.83
+  sphereCastRadius: 0.25
+  sphereCastDistance: 0.75
+  raycastLength: 0.75
+  rayOriginOffset1: {x: -0.2, y: 0, z: 0.16}
+  rayOriginOffset2: {x: 0.2, y: 0, z: -0.16}
+  showGizmos: 0
+  xRotation: 0
+  isGrounded: 0
+  groundSlopeAngle: 0
+  groundSlopeDir: {x: 0, y: 0, z: 0}
+  isSlipping: 0
+  isSliding: 0
+  slideTimer: 0
+  slideForward: {x: 0, y: 0, z: 0}
+  isCeiling: 0
+  cursorActive: 0
+--- !u!114 &1687854340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687854333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fed801c79bc7c4387ddc81ed48be4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castingMask:
+    serializedVersion: 2
+    m_Bits: 0
+  cameraTx: {fileID: 0}
+  playerGFX: {fileID: 0}
+  useLocalInputs: 1
+  axisLookHorzizontal: Mouse X
+  axisLookVertical: Mouse Y
+  axisMoveHorzizontal: Horizontal
+  axisMoveVertical: Vertical
+  keyRun: 304
+  keyCrouch: 306
+  keyJump: 32
+  keySlide: 102
+  keyToggleCursor: 96
+  inputLookX: 0
+  inputLookY: 0
+  inputMoveX: 0
+  inputMoveY: 0
+  inputKeyRun: 0
+  inputKeyCrouch: 0
+  inputKeyDownJump: 0
+  inputKeyDownSlide: 0
+  inputKeyDownCursor: 0
+  mouseSensitivityX: 2
+  mouseSensitivityY: 2
+  mouseSnappiness: 20
+  invertLookY: 0
+  clampLookY: 90
+  crouchSpeed: 3
+  walkSpeed: 7
+  runSpeed: 12
+  slideSpeed: 14
+  slideDuration: 2.2
+  gravity: -9.81
+  jumpHeight: 2.5
+  groundCheckY: 0.33
+  ceilingCheckY: 1.83
+  sphereCastRadius: 0.25
+  sphereCastDistance: 0.75
+  raycastLength: 0.75
+  rayOriginOffset1: {x: -0.2, y: 0, z: 0.16}
+  rayOriginOffset2: {x: 0.2, y: 0, z: -0.16}
+  showGizmos: 0
+  xRotation: 0
+  isGrounded: 0
+  groundSlopeAngle: 0
+  groundSlopeDir: {x: 0, y: 0, z: 0}
+  isSlipping: 0
+  isSliding: 0
+  slideTimer: 0
+  slideForward: {x: 0, y: 0, z: 0}
+  isCeiling: 0
+  cursorActive: 0
+--- !u!143 &1687854341
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687854333}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1949105056
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +867,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1406080051}
   - {fileID: 1949105059}
   - {fileID: 1687854337}
   - {fileID: 1257974557}
