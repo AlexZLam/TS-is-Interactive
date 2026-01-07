@@ -146,11 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80a5d777543b63048b53b31fd79489a3, type: 3}
       propertyPath: m_LocalPosition.x
-<<<<<<< Updated upstream
-      value: 0.07
-=======
       value: 0.0070989663
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80a5d777543b63048b53b31fd79489a3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -158,11 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80a5d777543b63048b53b31fd79489a3, type: 3}
       propertyPath: m_LocalPosition.z
-<<<<<<< Updated upstream
-      value: -0.76
-=======
       value: 0.42802304
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80a5d777543b63048b53b31fd79489a3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -402,15 +394,6 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406080048}
   serializedVersion: 2
-<<<<<<< Updated upstream
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
   m_LocalRotation: {x: 0, y: 0.0148347085, z: 0, w: 0.99988997}
   m_LocalPosition: {x: -0.00000022542818, y: 0.495, z: -0.338}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -462,7 +445,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
->>>>>>> Stashed changes
 --- !u!1 &1687854333
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,13 +458,9 @@ GameObject:
   - component: {fileID: 1687854335}
   - component: {fileID: 1687854334}
   - component: {fileID: 1687854338}
-<<<<<<< Updated upstream
-  m_Layer: 0
-=======
   - component: {fileID: 1687854341}
   - component: {fileID: 1687854340}
   m_Layer: 6
->>>>>>> Stashed changes
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,8 +586,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
-<<<<<<< Updated upstream
-=======
 --- !u!114 &1687854340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,7 +677,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &1949105056
 GameObject:
   m_ObjectHideFlags: 0
