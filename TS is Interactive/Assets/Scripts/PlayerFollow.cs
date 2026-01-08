@@ -3,20 +3,22 @@ using UnityEngine;
 public class LookAtPlayer : MonoBehaviour
 {
     public Transform player;
-    public Animator animator;
+    public Animator lilAnimator;
+    public Animator canvasAnimator;
 
     private bool shouldLookAtPlayer = false;
     private bool hasPlayedAnimation = false;
+    private bool finishPopUps = false;
 
     public void StartRotationAnimation()
     {
         if (hasPlayedAnimation) return;
 
         hasPlayedAnimation = true;
-        animator.SetTrigger("Rotate");
+        lilAnimator.SetTrigger("Rotate");
 
-        // Change this to match your animation length
         Invoke(nameof(StartLooking), 3f);
+        canvasAnim();
     }
 
     void StartLooking()
@@ -26,12 +28,24 @@ public class LookAtPlayer : MonoBehaviour
 
     void Update()
     {
-
         if (!shouldLookAtPlayer) return;
+        followPlayer();
+    }
 
+    void followPlayer()
+    {
         Vector3 target = player.position;
-        Debug.Log("Player Postition " + target);
         target.y = transform.position.y;
         transform.LookAt(target);
+    }
+
+    public void canvasAnim()
+    {
+        if (finishPopUps) return;
+
+        finishPopUps = true;
+
+        // Play ONE animation clip
+        canvasAnimator.SetTrigger("Playonce");
     }
 }
