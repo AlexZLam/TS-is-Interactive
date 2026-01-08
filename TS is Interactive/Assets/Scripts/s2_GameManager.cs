@@ -20,6 +20,7 @@ public class s2_GameManager : MonoBehaviour
     private string current_step;
     private TMPro.TextMeshProUGUI text_display;
     public bool level_done = false;
+    private GameObject obj_in_view;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -93,7 +94,11 @@ public class s2_GameManager : MonoBehaviour
             //if left mouse button clicked
             if (Input.GetMouseButtonDown(0))
             {
-
+                string obj_flavortext = obj_in_view.GetComponent<s2_clickable_object>().flavortext;
+                if (obj_flavortext != null)
+                {
+                    displayText(obj_flavortext);
+                }
             }
             //skip button
             if(Input.GetKeyDown(skip_button))
@@ -117,6 +122,11 @@ public class s2_GameManager : MonoBehaviour
     public void readyUp()
     {
         ready_for_next_step = true;
+    }
+
+    public void set_obj_in_view(GameObject obj)
+    {
+        obj_in_view = obj;
     }
 
     /*
