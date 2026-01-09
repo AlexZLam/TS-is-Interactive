@@ -95,36 +95,40 @@ public class s2_GameManager : MonoBehaviour
             //if left mouse button clicked
             if (Input.GetMouseButtonDown(0))
             {
-                string obj_flavortext = obj_in_view.GetComponent<s2_clickable_object>().flavortext;
-                if (obj_flavortext != null)
+                if(obj_in_view.GetComponent<s2_clickable_object>() != null)
                 {
-                    displayText(obj_flavortext);
-                }
-                string obj_phase = obj_in_view.GetComponent<s2_clickable_object>().phase;
-                if (obj_phase != null)
-                {
-                    if(current_step.Contains("readyup") && current_step.Contains(obj_phase))
+                    string obj_flavortext = obj_in_view.GetComponent<s2_clickable_object>().flavortext;
+                    if (obj_flavortext != "")
                     {
-                        if(obj_phase == "table")
+                        displayText(obj_flavortext);
+                    }
+                    string obj_phase = obj_in_view.GetComponent<s2_clickable_object>().phase;
+                    if (obj_phase != "")
+                    {
+                        if (current_step.Contains("readyup") && current_step.Contains(obj_phase))
                         {
-                            obj_phase += "_done";
-                            table_phase_counter += 1;
-                            if (table_phase_counter == 3)
+                            if (obj_phase == "table")
                             {
+                                obj_phase += "_done";
+                                table_phase_counter += 1;
+                                if (table_phase_counter == 3)
+                                {
+                                    readyUp();
+                                }
+                            }
+                            else
+                            {
+                                if (obj_phase == "door")
+                                {
+                                    obj_in_view.GetComponent<Animation>().Play();
+                                }
                                 readyUp();
                             }
+
                         }
-                        else
-                        {
-                            if (obj_phase == "door")
-                            {
-                                obj_in_view.GetComponent<Animation>().Play();
-                            }
-                            readyUp();
-                        }
-                        
                     }
                 }
+                
             }
             //skip button
             if(Input.GetKeyDown(skip_button))
