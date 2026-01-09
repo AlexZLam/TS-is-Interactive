@@ -1,11 +1,12 @@
 /*******************************************************************
- * File name: fourInteract
- * Author: Nathen Mattis
+ * File name: s4_Interact
+ * Author: Diana Everman
+ * Editor/Commentor: Nathen Mattis
  * Digipen Email: 1119065@lwsd.org
  * Course: Video Game Programming I
- * Last edited: 1/8/2026
+ * Last edited: 1/9/2026
  *
- * Description: Prefixed with "four" to denote which scene this script
+ * Description: Prefixed with "s4" to denote which scene this script
  * is for. This script is attached to the player to figure out when
  * they are able to "use AI," sending a signal to another script to
  * put the "AI's" response on the screen. When the mouse is hovering
@@ -19,14 +20,11 @@ using UnityEngine.EventSystems;
 
 public class fourInteract : MonoBehaviour
 {
-    public Material highlightMaterial;
-    public Material selectionMaterial;
-
-    private Material originalMaterial;
-    private Transform highlight; // internal, only the computer will realize what is highlighted and what is
-                                 // not because I'm probably not going to learn how to give an object an outline
-    private Transform selection;
-    private RaycastHit raycastHit;
+    public float maxDistance = 3f;
+    public Camera pov_camera;
+    public s2_GameManager gameManager;
+    private Vector3 origin;
+    private Vector3 direction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,76 +35,45 @@ public class fourInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // Declare a variable to store information about the hit
+        RaycastHit hit;
 
+        // Origin point (e.g., the object's position) and direction (e.g., forward)
+        origin = pov_camera.transform.position;
+        direction = pov_camera.transform.forward;
 
-        if (highlight != null)
+        // Perform the raycast
+        // This function returns true if a collider is hit, and populates the 'hit' variable
+        if (Physics.Raycast(origin, direction, out hit, maxDistance))
         {
-            //highlight.GetComponent<MeshRenderer>().material = originalMaterial;
-            highlight = null;
-        }
-        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
-        {
-            highlight = raycastHit.transform;
-            hoveringProcess();
-        }
+            // The ray hit an object! Access information via the 'hit' variable.
 
-
-        interactionProcess();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        /*if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("interact");
-        }*/
-
-        //Debug.Log("enter triggered");
-
-    }
-
-    private void hoveringProcess()
-    {
-        if (highlight.CompareTag("Interactable") && highlight != selection)
-        {
-            //Debug.Log("Hovering over interactable object");
+            //update gameManager obj_in_view if needed
+            if (gameManager.obj_in_view != hit.transform.gameObject)
+            {
+                gameManager.obj_in_view = hit.transform.gameObject;
+                Debug.Log("Hit object: " + hit.transform.name);
+                Debug.Log("Hit point: " + hit.point); // The exact world position of the hit
+            }
         }
         else
         {
-            highlight = null;
-        }
-    }
+            // The ray did not hit any object within the maxDistance
 
-    private void interactionProcess()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Input.GetKey(KeyCode.E) && !EventSystem.current.IsPointerOverGameObject())
-        {
-            if (selection != null)
+            //update gameManager obj_in_view if needed
+            if (gameManager.obj_in_view != null)
             {
-                //selection.GetComponent<MeshRenderer>().material = originalMaterial;
-                selection = null;
-            }
-
-            if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
-            {
-                selection = raycastHit.transform;
-                if (selection.CompareTag("Interactable"))
-                {
-                    processInput();
-                }
-                else
-                {
-                    selection = null;
-                }
+                gameManager.obj_in_view = null;
+                Debug.Log("Ray missed.");
             }
         }
-    }
 
-    private void processInput()
-    {
-        Debug.Log("Attempt to interact successful");
+        Debug.DrawRay(origin, direction * maxDistance, Color.red);
+
+        /*
+         plan:
+        - give the gamemanager the current obj im looking at
+        - only change it if the obj im looking at just changed
+         */
     }
 }
