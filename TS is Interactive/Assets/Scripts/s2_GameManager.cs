@@ -116,6 +116,10 @@ public class s2_GameManager : MonoBehaviour
                         }
                         else
                         {
+                            if (obj_phase == "door")
+                            {
+                                obj_in_view.GetComponent<Animation>().Play();
+                            }
                             readyUp();
                         }
                         
