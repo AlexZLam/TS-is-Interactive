@@ -28,14 +28,25 @@ public class s2_clickRay : MonoBehaviour
         if (Physics.Raycast(origin, direction, out hit, maxDistance))
         {
             // The ray hit an object! Access information via the 'hit' variable.
-            Debug.Log("Hit object: " + hit.transform.name);
-            Debug.Log("Hit point: " + hit.point); // The exact world position of the hit
 
+            //update gameManager obj_in_view if needed
+            if (gameManager.obj_in_view != hit.transform.gameObject)
+            {
+                gameManager.obj_in_view = hit.transform.gameObject;
+                Debug.Log("Hit object: " + hit.transform.name);
+                Debug.Log("Hit point: " + hit.point); // The exact world position of the hit
+            }
         }
         else
         {
             // The ray did not hit any object within the maxDistance
-            Debug.Log("Ray missed.");
+
+            //update gameManager obj_in_view if needed
+            if (gameManager.obj_in_view != null)
+            {
+                gameManager.obj_in_view = null;
+                Debug.Log("Ray missed.");
+            }
         }
 
         Debug.DrawRay(origin, direction * maxDistance, Color.red);

@@ -6,7 +6,7 @@ public class s2_GameManager : MonoBehaviour
     
     public GameObject text_display_obj;
     private string steps_list = "wait 5 seconds\nman, watching tv is so boring. wish i had something else to do." +
-        "\nreadyup from desk\nwait 2 seconds\ndoorbell\nwait 0.3 seconds\ni should check that.\nreadyup from door\nlooks like i got a package. could it be...." +
+        "\nreadyup from table\nwait 2 seconds\ndoorbell\nwait 0.3 seconds\ni should check that.\nreadyup from door\nlooks like i got a package. could it be...." +
         "\nreadyup from package\nmy new meta rayban glasses with private in-lens display and wrist control??!?!?\nthis is sure to keep me entertained." +
         "\ntv time!\nreadyup from couch\ncant wait to try these on!\nreadyup from glasses\nso many apps...\nreadyup from apps\nreels!!!\nwait 1 second" +
         "\nreadyup from reels\nnow this is the life. \nwait 1 second    \nthe meta rayban glasses with private in lens display and wrist control are " +
@@ -20,7 +20,8 @@ public class s2_GameManager : MonoBehaviour
     private string current_step;
     private TMPro.TextMeshProUGUI text_display;
     public bool level_done = false;
-    private GameObject obj_in_view;
+    public GameObject obj_in_view;
+    private int table_phase_counter = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -99,6 +100,27 @@ public class s2_GameManager : MonoBehaviour
                 {
                     displayText(obj_flavortext);
                 }
+                string obj_phase = obj_in_view.GetComponent<s2_clickable_object>().phase;
+                if (obj_phase != null)
+                {
+                    if(current_step.Contains("readyup") && current_step.Contains(obj_phase))
+                    {
+                        if(obj_phase == "table")
+                        {
+                            obj_phase += "_done";
+                            table_phase_counter += 1;
+                            if (table_phase_counter == 3)
+                            {
+                                readyUp();
+                            }
+                        }
+                        else
+                        {
+                            readyUp();
+                        }
+                        
+                    }
+                }
             }
             //skip button
             if(Input.GetKeyDown(skip_button))
@@ -124,10 +146,6 @@ public class s2_GameManager : MonoBehaviour
         ready_for_next_step = true;
     }
 
-    public void set_obj_in_view(GameObject obj)
-    {
-        obj_in_view = obj;
-    }
 
     /*
      * sitting on couch, looking at roblox tv
