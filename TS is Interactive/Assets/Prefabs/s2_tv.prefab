@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6150947553623844184}
   - component: {fileID: 2906337374249484306}
   - component: {fileID: 3785587418416385055}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: tv_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 5332819344196756866}
   - component: {fileID: 5730942821220271310}
   - component: {fileID: 863408655565030545}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: tv_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 6524917317246967951}
   - component: {fileID: 1512368143975727857}
   - component: {fileID: 9119826941072467153}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: tv_screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -370,6 +370,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2127845406774461751}
+  - component: {fileID: 870895146432876658}
+  - component: {fileID: 6935820903894348731}
   m_Layer: 0
   m_Name: s2_tv
   m_TagString: Untagged
@@ -395,3 +397,38 @@ Transform:
   - {fileID: 1938578654423378686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &870895146432876658
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244014503801002328}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 3, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6935820903894348731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244014503801002328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a434f43ffce59a4c843e8e1112a5b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flavortext: gotta sit on the couch to watch this.
+  phase: 

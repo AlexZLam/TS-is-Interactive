@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2551366451024923743}
   - component: {fileID: 5467202335404102955}
   - component: {fileID: 6722113475186955029}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: table_leg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 3912831563840853328}
   - component: {fileID: 9186719666056957863}
   - component: {fileID: 3829520704135246379}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: table_top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 4586331010711273821}
   - component: {fileID: 1247882167788884875}
   - component: {fileID: 4932216997076281280}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: table_leg4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 774573468454887143}
   - component: {fileID: 546312209845651235}
   - component: {fileID: 15599543078160500}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: table_leg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -441,6 +441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7528193972543414424}
+  - component: {fileID: 1453121930817229662}
   m_Layer: 0
   m_Name: s2_table
   m_TagString: Untagged
@@ -468,6 +469,27 @@ Transform:
   - {fileID: 3729893851345570315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1453121930817229662
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699582282710766831}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 2.07, z: 3}
+  m_Center: {x: 0, y: -0.9, z: 0}
 --- !u!1 &8870165680939599521
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +502,7 @@ GameObject:
   - component: {fileID: 5433020882873979254}
   - component: {fileID: 3427978154124024186}
   - component: {fileID: 7665161041804284736}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: table_leg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +594,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

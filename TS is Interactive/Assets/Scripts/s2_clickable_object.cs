@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class s2_clickable_object : MonoBehaviour
 {
-    public string flavortext;
-    public string phase;
+    public string flavortext = "";
+    public string phase = "";
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
