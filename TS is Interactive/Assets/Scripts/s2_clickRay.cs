@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class s2_clickRay : MonoBehaviour
 {
-    public float maxDistance = 10f;
+    public float maxDistance = 3f;
     public Camera pov_camera;
+    public s2_GameManager gameManager;
     private Vector3 origin;
     private Vector3 direction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,11 +30,20 @@ public class s2_clickRay : MonoBehaviour
             // The ray hit an object! Access information via the 'hit' variable.
             Debug.Log("Hit object: " + hit.transform.name);
             Debug.Log("Hit point: " + hit.point); // The exact world position of the hit
+
         }
         else
         {
             // The ray did not hit any object within the maxDistance
             Debug.Log("Ray missed.");
         }
+
+        Debug.DrawRay(origin, direction * maxDistance, Color.red);
+
+        /*
+         plan:
+        - give the gamemanager the current obj im looking at
+        - only change it if the obj im looking at just changed
+         */
     }
 }
