@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1691898566717889450}
   - component: {fileID: 5277950299190909851}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: couch_arm_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 6023705048966303874}
   - component: {fileID: 6295824781997364723}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: couch_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 3792960417846732685}
   - component: {fileID: 7877888635835814197}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: couch_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,7 +372,7 @@ GameObject:
   - component: {fileID: 397411431404744218}
   - component: {fileID: 8650308323144238772}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: couch_arm_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
