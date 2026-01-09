@@ -37,7 +37,20 @@ public class fourInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hoveringProcess();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+
+        if (highlight != null)
+        {
+            //highlight.GetComponent<MeshRenderer>().material = originalMaterial;
+            highlight = null;
+        }
+        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
+        {
+            highlight = raycastHit.transform;
+            hoveringProcess();
+        }
+
 
         interactionProcess();
     }
@@ -48,30 +61,20 @@ public class fourInteract : MonoBehaviour
         {
             Debug.Log("interact");
         }*/
+
         //Debug.Log("enter triggered");
 
     }
 
     private void hoveringProcess()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (highlight != null)
+        if (highlight.CompareTag("Interactable") && highlight != selection)
         {
-            //highlight.GetComponent<MeshRenderer>().material = originalMaterial;
-            highlight = null;
+            //Debug.Log("Hovering over interactable object");
         }
-        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
+        else
         {
-            highlight = raycastHit.transform;
-            if (highlight.CompareTag("Interactable") && highlight != selection)
-            {
-                //Debug.Log("Hovering over interactable object");
-            }
-            else
-            {
-                highlight = null;
-            }
+            highlight = null;
         }
     }
 
