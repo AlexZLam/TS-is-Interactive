@@ -4,7 +4,7 @@
  * Editor/Commentor: Nathen Mattis
  * Digipen Email: 1119065@lwsd.org
  * Course: Video Game Programming I
- * Last edited: 1/9/2026
+ * Last edited: 1/12/2026
  *
  * Description: Prefixed with "s4" to denote which scene this script
  * is for. This script is attached to the player to figure out when
@@ -22,7 +22,8 @@ public class fourInteract : MonoBehaviour
 {
     public float maxDistance = 3f;
     public Camera pov_camera;
-    public s2_GameManager gameManager;
+    public s4_gameManager GameManager;
+
     private Vector3 origin;
     private Vector3 direction;
 
@@ -48,32 +49,41 @@ public class fourInteract : MonoBehaviour
         {
             // The ray hit an object! Access information via the 'hit' variable.
 
-            //update gameManager obj_in_view if needed
-            if (gameManager.obj_in_view != hit.transform.gameObject)
+
+            // The raycast hits an object and that object is scanned for the "Interactable" tag
+            if (hit.collider.gameObject.CompareTag("Interactable"))
             {
-                gameManager.obj_in_view = hit.transform.gameObject;
-                Debug.Log("Hit object: " + hit.transform.name);
-                Debug.Log("Hit point: " + hit.point); // The exact world position of the hit
+                if (GameManager.objectInView != hit.collider.gameObject)
+                {
+                    GameManager.objectInView = hit.collider.gameObject;
+                }
+
+                GameManager.objectHoverDisplay();
+                //Debug.Log("YAY!!!!!");
             }
+            /*else if (!hit.collider.gameObject.CompareTag("Interactable"))
+            {
+                GameManager.objectInView = null;
+            }*/
+
         }
         else
         {
             // The ray did not hit any object within the maxDistance
 
             //update gameManager obj_in_view if needed
-            if (gameManager.obj_in_view != null)
+            /*if (gameManager.obj_in_view != null)
             {
                 gameManager.obj_in_view = null;
                 Debug.Log("Ray missed.");
-            }
+            }*/
         }
 
         Debug.DrawRay(origin, direction * maxDistance, Color.red);
+    }
 
-        /*
-         plan:
-        - give the gamemanager the current obj im looking at
-        - only change it if the obj im looking at just changed
-         */
+    private void processHit()
+    {
+
     }
 }
