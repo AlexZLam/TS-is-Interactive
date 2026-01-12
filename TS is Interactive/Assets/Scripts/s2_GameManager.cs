@@ -22,6 +22,8 @@ public class s2_GameManager : MonoBehaviour
     public bool level_done = false;
     public GameObject obj_in_view;
     private int table_phase_counter = 0;
+    public GameObject player;
+    public GameObject couch_sit;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,10 +66,10 @@ public class s2_GameManager : MonoBehaviour
                 Debug.Log("current_step: " + current_step);
                 if(current_step.StartsWith("end level"))
                 {
-
+                    Debug.Log("level over");
                 }
                 //wait
-                if(current_step.StartsWith("wait"))
+                else if(current_step.StartsWith("wait"))
                 {
                     string waitstring = current_step.Substring(5);
                     waitstring = waitstring.Substring(0, waitstring.IndexOf(" "));
@@ -105,6 +107,14 @@ public class s2_GameManager : MonoBehaviour
                     string obj_phase = obj_in_view.GetComponent<s2_clickable_object>().phase;
                     if (obj_phase != "")
                     {
+                        if (obj_phase == "couch")
+                        {
+                            player.SetActive(false);
+                            player.transform.position = couch_sit.transform.position;
+                            player.transform.rotation = couch_sit.transform.rotation * Quaternion.Euler(0, 180f, 0);
+                            player.SetActive(true);
+                            Debug.Log("couch sat, player.transform.position = " + player.transform.position + ", couch_sit.transform.position = " + couch_sit.transform.position);
+                        }
                         if (current_step.Contains("readyup") && current_step.Contains(obj_phase))
                         {
                             if (obj_phase == "table")

@@ -33,8 +33,8 @@ public class s2_clickRay : MonoBehaviour
             if (gameManager.obj_in_view != hit.transform.gameObject)
             {
                 gameManager.obj_in_view = hit.transform.gameObject;
-                Debug.Log("Hit object: " + hit.transform.name);
-                Debug.Log("Hit point: " + hit.point); // The exact world position of the hit
+                //Debug.Log("Hit object: " + hit.transform.name);
+                //Debug.Log("Hit point: " + hit.point); // The exact world position of the hit
             }
         }
         else
@@ -45,7 +45,7 @@ public class s2_clickRay : MonoBehaviour
             if (gameManager.obj_in_view != null)
             {
                 gameManager.obj_in_view = null;
-                Debug.Log("Ray missed.");
+                //Debug.Log("Ray missed.");
             }
         }
 

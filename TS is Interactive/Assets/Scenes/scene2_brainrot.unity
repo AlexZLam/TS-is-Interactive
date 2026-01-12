@@ -157,6 +157,8 @@ MonoBehaviour:
   skip_button: 113
   level_done: 0
   obj_in_view: {fileID: 0}
+  player: {fileID: 1262482984}
+  couch_sit: {fileID: 481527375}
 --- !u!4 &308955626
 Transform:
   m_ObjectHideFlags: 0
@@ -275,6 +277,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &481527375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6463479322274433855, guid: 6a6ba934a69b3db438cb4c1ad148f440, type: 3}
+  m_PrefabInstance: {fileID: 1711719859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &596271274
 PrefabInstance:
   m_ObjectHideFlags: 0
