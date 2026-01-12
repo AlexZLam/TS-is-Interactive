@@ -24,6 +24,8 @@ public class s2_GameManager : MonoBehaviour
     private int table_phase_counter = 0;
     public GameObject player;
     public GameObject couch_sit;
+    public GameObject glasses;
+    public GameObject glasses_overlay;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -97,48 +99,62 @@ public class s2_GameManager : MonoBehaviour
             //if left mouse button clicked
             if (Input.GetMouseButtonDown(0))
             {
-                if(obj_in_view.GetComponent<s2_clickable_object>() != null)
+                if(obj_in_view != null)
                 {
-                    string obj_flavortext = obj_in_view.GetComponent<s2_clickable_object>().flavortext;
-                    if (obj_flavortext != "")
+                    if(obj_in_view.GetComponent<s2_clickable_object>() != null)
                     {
-                        displayText(obj_flavortext);
-                    }
-                    string obj_phase = obj_in_view.GetComponent<s2_clickable_object>().phase;
-                    if (obj_phase != "")
-                    {
-                        if (obj_phase == "couch")
+                        string obj_flavortext = obj_in_view.GetComponent<s2_clickable_object>().flavortext;
+                        if (obj_flavortext != "")
                         {
-                            player.SetActive(false);
-                            player.transform.position = couch_sit.transform.position;
-                            player.transform.rotation = couch_sit.transform.rotation * Quaternion.Euler(0, 180f, 0);
-                            player.SetActive(true);
-                            Debug.Log("couch sat, player.transform.position = " + player.transform.position + ", couch_sit.transform.position = " + couch_sit.transform.position);
+                            displayText(obj_flavortext);
                         }
-                        if (current_step.Contains("readyup") && current_step.Contains(obj_phase))
+                        string obj_phase = obj_in_view.GetComponent<s2_clickable_object>().phase;
+                        if (obj_phase != "")
                         {
-                            if (obj_phase == "table")
+                            if (obj_phase == "couch")
                             {
-                                obj_phase += "_done";
-                                table_phase_counter += 1;
-                                if (table_phase_counter == 3)
+                                player.SetActive(false);
+                                player.transform.position = couch_sit.transform.position;
+                                player.transform.rotation = couch_sit.transform.rotation * Quaternion.Euler(0, 180f, 0);
+                                player.SetActive(true);
+                                Debug.Log("couch sat, player.transform.position = " + player.transform.position + ", couch_sit.transform.position = " + couch_sit.transform.position);
+                            }
+                            if (current_step.Contains("readyup") && current_step.Contains(obj_phase))
+                            {
+                                if (obj_phase == "table")
                                 {
+                                    obj_phase += "_done";
+                                    table_phase_counter += 1;
+                                    if (table_phase_counter == 3)
+                                    {
+                                        readyUp();
+                                    }
+                                }
+                                else
+                                {
+                                    if (obj_phase == "door")
+                                    {
+                                        obj_in_view.GetComponent<Animation>().Play();
+                                    }
+                                    if (obj_phase == "couch")
+                                    {
+                                        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                                        //spawn in glasses
+                                        glasses.SetActive(true);
+                                        glasses.GetComponent<Animation>().Play();
+                                    }
+                                    if (obj_phase == "glasses")
+                                    {
+                                        glasses.SetActive(false);
+                                        glasses_overlay.SetActive(true);
+                                    }
                                     readyUp();
                                 }
-                            }
-                            else
-                            {
-                                if (obj_phase == "door")
-                                {
-                                    obj_in_view.GetComponent<Animation>().Play();
-                                }
-                                readyUp();
-                            }
 
+                            }
                         }
                     }
                 }
-                
             }
             //skip button
             if(Input.GetKeyDown(skip_button))
