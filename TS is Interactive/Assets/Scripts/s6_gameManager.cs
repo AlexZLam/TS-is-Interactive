@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class s6_GameManager : MonoBehaviour
 {
+    public GameObject text_display_obj;
     public bool level_done = false;
     public GameObject obj_in_view;
     private TMPro.TextMeshProUGUI text_display;
-    public GameObject text_display_obj;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,20 +22,24 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         if (level_done == false)
         {
-
-
             //if left mouse button clicked
             if (Input.GetMouseButtonDown(0))
             {
-                string obj_flavortext = obj_in_view.GetComponent<s2_clickable_object>().flavortext;
-                if (obj_flavortext != null)
+                if (obj_in_view != null)
                 {
-                    displayText(obj_flavortext);
-                }
-                string obj_phase = obj_in_view.GetComponent<s2_clickable_object>().phase;
-                if (obj_phase != null)
-                {
-
+                    string obj_flavortext = obj_in_view.GetComponent<s2_clickable_object>().flavortext;
+                    if (obj_flavortext != null)
+                    {
+                        displayText(obj_flavortext);
+                    }
+                    string obj_phase = obj_in_view.GetComponent<s2_clickable_object>().phase;
+                    if (obj_phase != null)
+                    {
+                        if (obj_phase == "door")
+                        {
+                            obj_in_view.transform.Rotate(0, 50 * Time.deltaTime, 0);
+                        }
+                    }
                 }
             }
         }
