@@ -5,27 +5,32 @@ public class s2_GameManager : MonoBehaviour
 {
     
     public GameObject text_display_obj;
-    private string steps_list = "wait 5 seconds\nman, watching tv is so boring. wish i had something else to do." +
-        "\nreadyup from table\nwait 2 seconds\ndoorbell\nwait 0.3 seconds\ni should check that.\nreadyup from door\nlooks like i got a package. could it be...." +
-        "\nreadyup from package\nmy new meta rayban glasses with private in-lens display and wrist control??!?!?\nthis is sure to keep me entertained." +
-        "\ntv time!\nreadyup from couch\ncant wait to try these on!\nreadyup from glasses\nso many apps...\nreadyup from apps\nreels!!!\nwait 1 second" +
-        "\nreadyup from reels\nnow this is the life. \nwait 1 second    \nthe meta rayban glasses with private in lens display and wrist control are " +
-        "perfect for keeping all critical thought from my brain! \n wait 5 seconds \n end level";
-    private bool ready_for_next_step = true;
     public KeyCode skip_button;
-    private float timer_counter;
-    private bool timer_active;
-    private string[] steps;
-    private int current_step_index;
-    private string current_step;
-    private TMPro.TextMeshProUGUI text_display;
     public bool level_done = false;
     public GameObject obj_in_view;
-    private int table_phase_counter = 0;
     public GameObject player;
     public GameObject couch_sit;
     public GameObject glasses;
     public GameObject glasses_overlay;
+    public GameObject apps;
+    public s2_reels reels;
+
+    private string steps_list = "wait 5 seconds\nman, watching tv is so boring. wish i had something else to do." +
+        "\nreadyup from table\nwait 2 seconds\ndoorbell\nwait 0.3 seconds\ni should check that.\nreadyup from door\nlooks like i got a package. could it be...." +
+        "\nreadyup from package\nmy new meta rayban glasses with private in-lens display and wrist control??!?!?\nthis is sure to keep me entertained." +
+        "\ntv time!\nreadyup from couch\ncant wait to try these on!\nreadyup from glasses\nso many apps...\nreadyup from instagram\nreels!!!\nwait 1 second" +
+        "\nreadyup from reels\nnow this is the life. \nwait 1 second    \nthe meta rayban glasses with private in lens display and wrist control are " +
+        "perfect for keeping all critical thought from my brain! \n wait 5 seconds \n end level";
+    private string[] steps;
+    private int current_step_index;
+    private string current_step;
+    private bool ready_for_next_step = true;
+    private float timer_counter;
+    private bool timer_active;
+    private TMPro.TextMeshProUGUI text_display;
+    private int table_phase_counter = 0;
+
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -99,7 +104,14 @@ public class s2_GameManager : MonoBehaviour
             //if left mouse button clicked
             if (Input.GetMouseButtonDown(0))
             {
-                if(obj_in_view != null)
+                if(current_step == "readyup from reels")
+                {
+                    if(reels.open_reel())
+                    {
+                        readyUp();
+                    }
+                }
+                else if(obj_in_view != null)
                 {
                     if(obj_in_view.GetComponent<s2_clickable_object>() != null)
                     {
@@ -117,7 +129,6 @@ public class s2_GameManager : MonoBehaviour
                                 player.transform.position = couch_sit.transform.position;
                                 player.transform.rotation = couch_sit.transform.rotation * Quaternion.Euler(0, 180f, 0);
                                 player.SetActive(true);
-                                Debug.Log("couch sat, player.transform.position = " + player.transform.position + ", couch_sit.transform.position = " + couch_sit.transform.position);
                             }
                             if (current_step.Contains("readyup") && current_step.Contains(obj_phase))
                             {
@@ -147,6 +158,13 @@ public class s2_GameManager : MonoBehaviour
                                     {
                                         glasses.SetActive(false);
                                         glasses_overlay.SetActive(true);
+                                        apps.SetActive(true);
+
+                                    }
+                                    if (obj_phase == "instagram")
+                                    {
+                                        apps.SetActive(false);
+
                                     }
                                     readyUp();
                                 }
