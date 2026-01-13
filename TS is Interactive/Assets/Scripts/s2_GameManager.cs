@@ -13,14 +13,15 @@ public class s2_GameManager : MonoBehaviour
     public GameObject glasses;
     public GameObject glasses_overlay;
     public GameObject apps;
+    public GameObject reels_button;
     public s2_reels reels;
 
     private string steps_list = "wait 5 seconds\nman, watching tv is so boring. wish i had something else to do." +
         "\nreadyup from table\nwait 2 seconds\ndoorbell\nwait 0.3 seconds\ni should check that.\nreadyup from door\nlooks like i got a package. could it be...." +
         "\nreadyup from package\nmy new meta rayban glasses with private in-lens display and wrist control??!?!?\nthis is sure to keep me entertained." +
-        "\ntv time!\nreadyup from couch\ncant wait to try these on!\nreadyup from glasses\nso many apps...\nreadyup from instagram\nreels!!!\nwait 1 second" +
+        "\ntv time!\nreadyup from couch\ncant wait to try these on!\nreadyup from glasses\nso many apps...\nreadyup from instagram\nreels!!!" + //\nwait 1 second" +
         "\nreadyup from reels\nnow this is the life. \nwait 1 second    \nthe meta rayban glasses with private in lens display and wrist control are " +
-        "perfect for keeping all critical thought from my brain! \n wait 5 seconds \n end level";
+        "perfect for keeping all critical thought from my brain! \nwait 5 seconds \n end level";
     private string[] steps;
     private int current_step_index;
     private string current_step;
@@ -104,14 +105,15 @@ public class s2_GameManager : MonoBehaviour
             //if left mouse button clicked
             if (Input.GetMouseButtonDown(0))
             {
-                if(current_step == "readyup from reels")
-                {
-                    if(reels.open_reel())
-                    {
-                        readyUp();
-                    }
-                }
-                else if(obj_in_view != null)
+                //if(current_step == "readyup from reels")
+                //{
+                //    if(reels.open_reel())
+                 //   {
+                 //       readyUp();
+                 //   }
+                //}
+                //else
+                if(obj_in_view != null)
                 {
                     if(obj_in_view.GetComponent<s2_clickable_object>() != null)
                     {
@@ -141,6 +143,13 @@ public class s2_GameManager : MonoBehaviour
                                         readyUp();
                                     }
                                 }
+                                else if (obj_phase == "reels")
+                                {
+                                    if (reels.open_reel())
+                                    {
+                                        readyUp();
+                                    }
+                                }
                                 else
                                 {
                                     if (obj_phase == "door")
@@ -164,6 +173,8 @@ public class s2_GameManager : MonoBehaviour
                                     if (obj_phase == "instagram")
                                     {
                                         apps.SetActive(false);
+                                        reels_button.SetActive(true);
+                                        Debug.Log("insta readyup");
 
                                     }
                                     readyUp();
