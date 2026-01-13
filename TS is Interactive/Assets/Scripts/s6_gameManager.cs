@@ -8,10 +8,12 @@ public class s6_GameManager : MonoBehaviour
     public GameObject obj_in_view;
     private TMPro.TextMeshProUGUI text_display;
     public GameObject fullDoor;
+    public bool textShowing;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        text_display_obj.SetActive(true);
         text_display = text_display_obj.GetComponent<TMPro.TextMeshProUGUI>();
         if (text_display == null)
         {
@@ -44,17 +46,28 @@ public class s6_GameManager : MonoBehaviour
                             {
                                 obj_in_view.GetComponent<Animation>().Play();
                             }
+                            else if (obj_phase == "meta")
+                            {
+                                obj_in_view.transform.position = new Vector3(100, -100f, 100);
+                            }
+                            else if (obj_phase == "man")
+                            {
+
+                            }
                         }
                     }
                 }
             }
         }
     }
-    private void displayText(string text)
+
+    void displayText(string text)
     {
         text_display.text = text;
-        text_display_obj.SetActive(false);
+        Instantiate(text_display_obj);
     }
+
+
 }
 
 
