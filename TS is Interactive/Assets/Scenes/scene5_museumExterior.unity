@@ -3007,6 +3007,7 @@ MonoBehaviour:
   scene3: Scene4
   scene4: scene6_HitbCar
   scene5: scene5_museumExterior
+  scene6: Explanation
   switchScene: 0
 --- !u!4 &1865913372
 Transform:
