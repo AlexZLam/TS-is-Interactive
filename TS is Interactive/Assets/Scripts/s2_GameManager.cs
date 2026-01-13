@@ -21,7 +21,7 @@ public class s2_GameManager : MonoBehaviour
         "\nreadyup from package\nmy new meta rayban glasses with private in-lens display and wrist control??!?!?\nthis is sure to keep me entertained." +
         "\ntv time!\nreadyup from couch\ncant wait to try these on!\nreadyup from glasses\nso many apps...\nreadyup from instagram\nreels!!!" + //\nwait 1 second" +
         "\nreadyup from reels\nnow this is the life. \nwait 1 second    \nthe meta rayban glasses with private in lens display and wrist control are " +
-        "perfect for keeping all critical thought from my brain! \nwait 5 seconds \n end level";
+        "perfect for keeping all critical thought from my brain! \nwait 5 seconds \nend level";
     private string[] steps;
     private int current_step_index;
     private string current_step;
