@@ -7,7 +7,12 @@ public class stealjersey : MonoBehaviour
     bool canPress = false;
     public GameObject jersey;
     public GameObject text;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public SceneSwitcher sceneS;
+    void Start()
+    {
+        sceneS = GameObject.FindGameObjectWithTag("SceneSwitcher").GetComponent<SceneSwitcher>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -31,6 +36,7 @@ public class stealjersey : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(jersey);
+                sceneS.switchScene = true;
             }
             
         }

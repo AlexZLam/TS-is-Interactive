@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Wake Up Trigger
+  - Interactable
+  - SceneSwitcher
   layers:
   - Default
   - TransparentFX

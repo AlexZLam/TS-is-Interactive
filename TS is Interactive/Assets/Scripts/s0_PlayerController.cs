@@ -125,7 +125,7 @@ public class BasicFPCC : MonoBehaviour
 
     [Header("- reference variables -")]
     public float xRotation = 0f;                     // the up/down angle the player is looking
-    private float lastSpeed = 0;                     // reference for calculating speed
+    public float lastSpeed = 0;                     // reference for calculating speed
     private Vector3 fauxGravity = Vector3.zero;      // calculated gravity
     private float accMouseX = 0;                     // reference for mouse look smoothing
     private float accMouseY = 0;                     // reference for mouse look smoothing
