@@ -10,6 +10,12 @@ public class s2_reels : MonoBehaviour
     void Start()
     {
         final_index = reels_list.Count - 1;
+        for (int i = 0; i < reels_list.Count; i++)
+        {
+            Debug.Log("reels_list[i]: " + reels_list[i] + ", i: " + i);
+        }
+        Debug.Log("final_index: " + final_index);
+
     }
 
     // Update is called once per frame
@@ -20,13 +26,22 @@ public class s2_reels : MonoBehaviour
 
     public bool open_reel()
     {
-        reels_list[reels_index].SetActive(true);
-        reels_index += 1;
-        //open reel, returns true if done w all reels
-        if(final_index == reels_index)
+        //if (final_index == reels_index)
+        //{
+        //    return true;
+        //}
+        if(reels_index <= final_index)
         {
-            return true;
+            reels_list[reels_index].SetActive(true);
+            reels_index += 1;
+            return false;
         }
-        return false;
+        return true;
+        //open reel, returns true if done w all reels
+        //if (final_index == reels_index)
+        //{/
+        //    return true;
+        //}
+        //return false;
     }
 }
