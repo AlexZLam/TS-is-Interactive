@@ -12,9 +12,8 @@ public class s2_reels : MonoBehaviour
         final_index = reels_list.Count - 1;
         for (int i = 0; i < reels_list.Count; i++)
         {
-            Debug.Log("reels_list[i]: " + reels_list[i] + ", i: " + i);
+           reels_list[i].SetActive(false);
         }
-        Debug.Log("final_index: " + final_index);
 
     }
 

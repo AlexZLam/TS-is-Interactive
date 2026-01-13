@@ -75,6 +75,7 @@ public class s2_GameManager : MonoBehaviour
                 if(current_step.StartsWith("end level"))
                 {
                     Debug.Log("level over");
+                    level_done = true;
                 }
                 //wait
                 else if(current_step.StartsWith("wait"))
