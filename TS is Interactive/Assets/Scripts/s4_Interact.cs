@@ -49,41 +49,40 @@ public class fourInteract : MonoBehaviour
         {
             // The ray hit an object! Access information via the 'hit' variable.
 
-
             // The raycast hits an object and that object is scanned for the "Interactable" tag
-            if (hit.collider.gameObject.CompareTag("Interactable"))
+            if (hit.collider.gameObject.CompareTag("Interactable"))  //is an interactable object
             {
+                // Tells the game manager what object the player is looking at
                 if (GameManager.objectInView != hit.collider.gameObject)
                 {
                     GameManager.objectInView = hit.collider.gameObject;
                 }
 
-                GameManager.objectHoverDisplay();
+                // Tells the game manager to update the text that displays the name of the object the player is looking at
+                GameManager.objectHoverDisplay(true);
+
                 //Debug.Log("YAY!!!!!");
             }
-            /*else if (!hit.collider.gameObject.CompareTag("Interactable"))
+            else if (!hit.collider.gameObject.CompareTag("Interactable")) //is not an interactable object
             {
                 GameManager.objectInView = null;
-            }*/
+                GameManager.objectHoverDisplay(false);
+            }
 
         }
         else
         {
             // The ray did not hit any object within the maxDistance
 
-            //update gameManager obj_in_view if needed
-            /*if (gameManager.obj_in_view != null)
+            // tells the game manager there is no object in view anymore
+            if (GameManager.objectInView != null)
             {
-                gameManager.obj_in_view = null;
-                Debug.Log("Ray missed.");
-            }*/
+                GameManager.objectInView = null;
+                GameManager.objectHoverDisplay(false);
+                //Debug.Log("Ray missed.");
+            }
         }
 
         Debug.DrawRay(origin, direction * maxDistance, Color.red);
-    }
-
-    private void processHit()
-    {
-
     }
 }
