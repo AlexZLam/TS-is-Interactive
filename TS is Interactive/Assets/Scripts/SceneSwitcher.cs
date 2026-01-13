@@ -10,6 +10,7 @@ public class SceneSwitcher : MonoBehaviour
     public string scene3 = "Scene3";
     public string scene4 = "Scene4";
     public string scene5 = "Scene5";
+    public string scene6 = "Scene6";
     public bool switchScene = false;
     Scene currentScene;
 
@@ -46,6 +47,10 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene(scene4);
     }
+    public void LoadScene5()
+    {
+        SceneManager.LoadScene(scene6);
+    }
 
     public void LoadSceneByIndex(int index)
     {
@@ -67,8 +72,10 @@ public class SceneSwitcher : MonoBehaviour
                 LoadScene3();
             else if (currentScene.name == scene3)
                 LoadScene4();
+            else if (currentScene.name == scene4)
+                LoadScene5();
 
-            
+
         }
         switchScene = false;
     }
