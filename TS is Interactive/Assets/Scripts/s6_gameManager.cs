@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class s6_GameManager : MonoBehaviour
@@ -6,15 +7,19 @@ public class s6_GameManager : MonoBehaviour
     public bool level_done = false;
     public GameObject obj_in_view;
     private TMPro.TextMeshProUGUI text_display;
+    public GameObject fullDoor;
+    public bool textShowing;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        text_display_obj.SetActive(true);
         text_display = text_display_obj.GetComponent<TMPro.TextMeshProUGUI>();
         if (text_display == null)
         {
             Debug.Log("text_display_obj has no TMPro.TextMeshProUGUI component.");
         }
+        level_done = false;
     }
 
     // Update is called once per frame
@@ -27,27 +32,42 @@ public class s6_GameManager : MonoBehaviour
             {
                 if (obj_in_view != null)
                 {
-                    string obj_flavortext = obj_in_view.GetComponent<s2_clickable_object>().flavortext;
-                    if (obj_flavortext != null)
-                    {
-                        displayText(obj_flavortext);
-                    }
-                    string obj_phase = obj_in_view.GetComponent<s2_clickable_object>().phase;
-                    if (obj_phase != null)
-                    {
-                        if (obj_phase == "door")
+                    if (obj_in_view.GetComponent<s2_clickable_object>() != null)
+                    { 
+                        string obj_flavortext = obj_in_view.GetComponent<s2_clickable_object>().flavortext;
+                        if (obj_flavortext != "")
                         {
-                            obj_in_view.transform.Rotate(0, 50 * Time.deltaTime, 0);
+                            displayText(obj_flavortext);
+                        }
+                        string obj_phase = obj_in_view.GetComponent<s2_clickable_object>().phase;
+                        if (obj_phase != "")
+                        {
+                            if (obj_phase == "door")
+                            {
+                                obj_in_view.GetComponent<Animation>().Play();
+                            }
+                            else if (obj_phase == "meta")
+                            {
+                                obj_in_view.transform.position = new Vector3(100, -100f, 100);
+                            }
+                            else if (obj_phase == "man")
+                            {
+
+                            }
                         }
                     }
                 }
             }
         }
     }
-    private void displayText(string text)
+
+    void displayText(string text)
     {
         text_display.text = text;
+        Instantiate(text_display_obj);
     }
+
+
 }
 
 
