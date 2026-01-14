@@ -178,6 +178,11 @@ public class s2_GameManager : MonoBehaviour
                                         Debug.Log("insta readyup");
 
                                     }
+                                    if (obj_phase == "package")
+                                    {
+                                        obj_in_view.SetActive(false);
+
+                                    }
                                     readyUp();
                                 }
 
