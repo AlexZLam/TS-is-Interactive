@@ -2,18 +2,27 @@ using UnityEngine;
 
 public class s4_gameManager : MonoBehaviour
 {
-    [Header("Text Mesh Pro Variables")]
+    [Header("Text Variables")]
     public GameObject caption_display_obj;
+    public GameObject aiResponse_display_obj;
     public GameObject options_display_obj;
     public GameObject hover_display_obj;
-    /*public string defaultOptionOne;
-    public string defaultOptionTwo;
-    public string defaultOptionThree;*/
+    public string defaultOptionOne = "Dinner plans?";
+    public string defaultOptionTwo = "Home?";
+    public string defaultOptionThree = "Underwear?";
 
     // actual text change information
     private TMPro.TextMeshProUGUI caption_text;
     private TMPro.TextMeshProUGUI options_text;
     private TMPro.TextMeshProUGUI hover_text;
+
+    private string promptOptionOne;
+    private string promptOptionTwo;
+    private string promptOptionThree;
+
+    [Header("Animators")]
+    public Animator options_Animator;
+    public Animator aiResponse_Animator;
 
     [Header("Others")]
     public GameObject objectInView;
@@ -47,13 +56,41 @@ public class s4_gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        // Updating prompts 1-3 depending on if we are looking at an object or not
+        if (objectInView != null)
         {
-            processInput(promptIsShown);
+            promptOptionOne = objectInView.GetComponent<s4_objectInfo>().aiResponse_1;
+            promptOptionTwo = objectInView.GetComponent<s4_objectInfo>().aiResponse_2;
+            promptOptionThree = objectInView.GetComponent<s4_objectInfo>().aiResponse_3;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha1) && promptIsShown)
+        if (objectInView == null)
         {
-            processInput(promptIsShown);
+            promptOptionOne = defaultOptionOne;
+            promptOptionTwo = defaultOptionTwo;
+            promptOptionThree = defaultOptionThree;
+        }
+
+        // Interacting with AI
+        if (Input.GetKeyDown(KeyCode.E) && !promptIsShown) // Shows the prompts the player can use
+        {
+            changeOptionsText(promptOptionOne, promptOptionTwo, promptOptionThree);
+            togglePrompts(promptIsShown);
+            promptIsShown = true;
+            Debug.Log("attempting to run togglePrompts");
+        }
+
+        if (promptIsShown)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                selectPrompt(1);
+            }
+        }
+        
+        //debugging
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            aiResponse_display_obj.SetActive(false);
         }
     }
 
@@ -79,14 +116,25 @@ public class s4_gameManager : MonoBehaviour
         }
     }
 
-    private void processInput(bool promptIsShown)
+    private void togglePrompts(bool promptIsShown)
     {
-        // Toggling prompts to give to AI
         if (!promptIsShown)
         {
-            options_display_obj.SetActive(true);
+            options_Animator.SetBool("Prompts", true);
+            Debug.Log("animator bool was set to true");
         }
+    }
 
+    private void selectPrompt(int promptSelected)
+    {
         // Selecting AI prompts
+        aiResponse_display_obj.SetActive(true);
+
+        options_Animator.SetBool("Prompts", false);
+    }
+
+    private void changeOptionsText(string optionOne, string optionTwo, string optionThree)
+    {
+        options_text.text = "[1] " + optionOne + "\n[2] " + optionTwo + "\n[3] " + optionThree;
     }
 }
