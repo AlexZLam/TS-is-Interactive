@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class s2_phase_table : MonoBehaviour
+public class s5_switch_on_collision : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,13 +14,10 @@ public class s2_phase_table : MonoBehaviour
         
     }
 
-    /*
-    readyup from desk interact: 
-    (on desk: book, paintbrush, knitting, plant) all give responses
-    readyUp after 3 clicked
-    
-    
 
-
-     */
+    private void OnTriggerEnter(Collider other)
+    {
+        FindAnyObjectByType<SceneSwitcher>().switchScene = true;
+    }
+    
 }
