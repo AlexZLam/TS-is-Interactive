@@ -96,7 +96,13 @@ public class s2_GameManager : MonoBehaviour
             {
                 Debug.Log("level over");
                 level_done = true;
-                FindAnyObjectByType<SceneSwitcher>().switchScene = true;
+                SceneSwitcher switcher = FindAnyObjectByType<SceneSwitcher>();
+                if(switcher == null)
+                {
+                    Debug.Log("no SceneSwitcher in scene");
+                    return;
+                }
+                switcher.switchScene = true;
             }
             //wait timer
             else if (current_step.StartsWith("wait"))
