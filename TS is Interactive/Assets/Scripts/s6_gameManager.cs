@@ -9,6 +9,9 @@ public class s6_GameManager : MonoBehaviour
     private TMPro.TextMeshProUGUI text_display;
     public GameObject fullDoor;
     public bool textShowing;
+    public GameObject canvasReference;
+    public Music Music;
+    public GameObject player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +30,10 @@ public class s6_GameManager : MonoBehaviour
     {
         if (level_done == false)
         {
+            if (obj_in_view == player)
+            {
+                obj_in_view = null;
+            }
             //if left mouse button clicked
             if (Input.GetMouseButtonDown(0))
             {
@@ -49,10 +56,11 @@ public class s6_GameManager : MonoBehaviour
                             else if (obj_phase == "meta")
                             {
                                 obj_in_view.transform.position = new Vector3(100, -100f, 100);
+                                Music.glasses = true;
                             }
                             else if (obj_phase == "man")
                             {
-
+                                player.transform.position = new Vector3(0, 18.18f, 0);
                             }
                         }
                     }
@@ -64,7 +72,8 @@ public class s6_GameManager : MonoBehaviour
     void displayText(string text)
     {
         text_display.text = text;
-        Instantiate(text_display_obj);
+        GameObject textObject = Instantiate(text_display_obj);
+        textObject.transform.SetParent(canvasReference.transform, false);
     }
 
 

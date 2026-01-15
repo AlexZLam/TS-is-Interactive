@@ -8,7 +8,7 @@ public class s6_TextDelete : MonoBehaviour
 
     private void Start()
     {
-        manager.obj
+        
     }
     // Update is called once per frame
     void Update()
@@ -16,7 +16,7 @@ public class s6_TextDelete : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > 3)
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
     }
 }
