@@ -369,7 +369,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text_display_obj: {fileID: 617722344}
   skip_button: 113
+  text_timer: 1.5
   level_done: 0
+  reels: {fileID: 39166634}
   obj_in_view: {fileID: 0}
   player: {fileID: 1262482984}
   couch_sit: {fileID: 481527375}
@@ -377,7 +379,6 @@ MonoBehaviour:
   glasses_overlay: {fileID: 1114995890}
   apps: {fileID: 2009253875}
   reels_button: {fileID: 422164279}
-  reels: {fileID: 39166634}
 --- !u!4 &308955626
 Transform:
   m_ObjectHideFlags: 0
@@ -2130,7 +2131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1114995891
 RectTransform:
   m_ObjectHideFlags: 0

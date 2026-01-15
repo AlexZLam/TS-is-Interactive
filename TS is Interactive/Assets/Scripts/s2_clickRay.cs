@@ -1,3 +1,13 @@
+/****************************************************************************
+* File Name: s2_clickRay.cs
+* Author: Diana Everman
+* DigiPen Email: diana.everman@digipen.edu
+* Course: Video Game Programming Year 1
+*
+* Description: this script makes a raycast out from the pov camera that updates 
+*              every frame and changes the gamemanager's obj_in_view variable
+*              if the object that the raycast hit changes.
+****************************************************************************/
 using UnityEngine;
 
 public class s2_clickRay : MonoBehaviour
@@ -7,6 +17,7 @@ public class s2_clickRay : MonoBehaviour
     public s2_GameManager gameManager;
     private Vector3 origin;
     private Vector3 direction;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,25 +38,20 @@ public class s2_clickRay : MonoBehaviour
         // This function returns true if a collider is hit, and populates the 'hit' variable
         if (Physics.Raycast(origin, direction, out hit, maxDistance))
         {
-            // The ray hit an object! Access information via the 'hit' variable.
-
             //update gameManager obj_in_view if needed
             if (gameManager.obj_in_view != hit.transform.gameObject)
             {
                 gameManager.obj_in_view = hit.transform.gameObject;
-                //Debug.Log("Hit object: " + hit.transform.name);
-                //Debug.Log("Hit point: " + hit.point); // The exact world position of the hit
             }
         }
         else
         {
-            // The ray did not hit any object within the maxDistance
+            //ray did not hit
 
             //update gameManager obj_in_view if needed
             if (gameManager.obj_in_view != null)
             {
                 gameManager.obj_in_view = null;
-                //Debug.Log("Ray missed.");
             }
         }
 
