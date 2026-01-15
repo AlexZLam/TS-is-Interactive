@@ -1,3 +1,13 @@
+/****************************************************************************
+* File Name: s2_clickable_object.cs
+* Author: Diana Everman
+* DigiPen Email: diana.everman@digipen.edu
+* Course: Video Game Programming Year 1
+*
+* Description: this script can be applied to an object to give it flavortext 
+*              and/or phase labels to be used in the gamemanager for the scene.
+****************************************************************************/
+
 using UnityEngine;
 
 public class s2_clickable_object : MonoBehaviour
@@ -16,51 +26,4 @@ public class s2_clickable_object : MonoBehaviour
         
     }
 
-    /*plan:
-    - if the obj im looking at is this one, then put up its flavortext.
-    phases:
-    readyup from table interact: 
-        (on desk: book, paintbrush, knitting, plant) all give responses 
-        readyUp after 3 clicked
-    readyup from door
-        readyup when clicked
-    readyup from package
-        readyup when clicked
-                                readyup from couch: 
-                                    readyup on collision
-    readyup from glasses
-        click to equip
-        readyup once equipped
-    readyup from apps
-        response for each app
-        readyup when insta clicked
-    readyup from reels
-        spam click for reels (shake hand wildly)
-        readyup once done
-    /*
-     * sitting on couch, looking at roblox tv
-wait 5 seconds
-man, watching tv is so boring. wish i had something else to do.
-
-wait 2 seconds
-doorbell
-wait 0.3 seconds
-i should check that.
-
-looks like i got a package. could it be....
-
-my new meta rayban glasses with private in-lens display and wrist control??!?!?
-this is sure to keep me entertained.
-tv time!
-
-cant wait to try these on!
-
-so many apps...
-
-reels!!!
-wait 1 second
-
-now this is the life. 
-wait 1 second    
-    */
 }
