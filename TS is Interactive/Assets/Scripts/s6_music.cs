@@ -19,10 +19,11 @@ public class Music : MonoBehaviour
     public Texture2D danny;
     public Texture2D yuno;
     public float cooldown = 0;
+    public GameObject overlay;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        overlay.SetActive(false);
     }
 
     // Update is called once per frame
@@ -33,6 +34,7 @@ public class Music : MonoBehaviour
         {
             flyIn.SetBool("animate", true);
             musicController();
+            overlay.SetActive(true);
         }
     }
 

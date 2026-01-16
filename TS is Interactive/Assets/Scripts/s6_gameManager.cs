@@ -12,6 +12,8 @@ public class s6_GameManager : MonoBehaviour
     public GameObject canvasReference;
     public Music Music;
     public GameObject player;
+    public AudioSource pickup;
+    public AudioClip cs;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,11 +53,15 @@ public class s6_GameManager : MonoBehaviour
                         {
                             if (obj_phase == "door")
                             {
-                                obj_in_view.GetComponent<Animation>().Play();
+                                if (Music.glasses == true)
+                                {
+                                    obj_in_view.GetComponent<Animation>().Play();
+                                }
                             }
                             else if (obj_phase == "meta")
                             {
                                 obj_in_view.transform.position = new Vector3(100, -100f, 100);
+                                pickup.PlayOneShot(cs);
                                 Music.glasses = true;
                             }
                             else if (obj_phase == "man")
