@@ -38,7 +38,7 @@ public class fourInteract : MonoBehaviour
         direction = pov_camera.transform.forward;
 
         // Perform the raycast
-        // This function returns true if a collider is hit, and populates the 'hit' variable
+        // This function returns true if an object with a transform component is hit, and populates the 'hit' variable
         if (Physics.Raycast(origin, direction, out hit, maxDistance))
         {
             // The ray hit an object! Access information via the 'hit' variable.
@@ -47,9 +47,9 @@ public class fourInteract : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Interactable"))  //is an interactable object
             {
                 // Tells the game manager what object the player is looking at
-                if (GameManager.objectInView != hit.collider.gameObject)
+                if (GameManager.objectInView != hit.transform.gameObject)
                 {
-                    GameManager.objectInView = hit.collider.gameObject;
+                    GameManager.objectInView = hit.transform.gameObject;
                 }
 
                 // Tells the game manager to update the text that displays the name of the object the player is looking at
@@ -63,7 +63,7 @@ public class fourInteract : MonoBehaviour
                 }*/
                 //Debug.Log("YAY!!!!!");
             }
-            else if (!hit.collider.gameObject.CompareTag("Interactable")) //is not an interactable object
+            else if (!hit.transform.gameObject.CompareTag("Interactable")) //is not an interactable object
             {
 
                 //changedText = false; // we need to tell the game manager that something has changed
