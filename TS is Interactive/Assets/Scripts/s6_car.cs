@@ -47,7 +47,7 @@ public class s6_car : MonoBehaviour
         if (hitr == true)
         {
             timer += Time.deltaTime;
-            if (timer > 1.5f)
+            if (timer > 0.5f)
             {
                 black.SetActive(true);
             }

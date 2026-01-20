@@ -6,7 +6,7 @@ public class Music : MonoBehaviour
     public GameObject spotify;
     public bool glasses = false;
     public Animator flyIn;
-    public int songSelect = 0;
+    public int songSelect;
     public AudioSource AudioSource;
     public AudioClip tank;
     public AudioClip popOut;
@@ -24,6 +24,7 @@ public class Music : MonoBehaviour
     void Start()
     {
         overlay.SetActive(false);
+        songSelect = Random.Range(0, 4);
     }
 
     // Update is called once per frame

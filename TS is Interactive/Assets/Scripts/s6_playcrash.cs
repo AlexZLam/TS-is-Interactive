@@ -4,7 +4,7 @@ public class s6_playcrash : MonoBehaviour
 {
     public AudioSource audio;
     public AudioClip clip;
-    public float pan = -1;
+    public float pan = 1;
     private bool can = false;
 
     private void OnTriggerEnter(Collider other)
@@ -20,7 +20,7 @@ public class s6_playcrash : MonoBehaviour
     {
         if (can == true)
         {
-            audio.panStereo = pan + Time.deltaTime;
+            audio.panStereo = pan - Time.deltaTime;
         }
     }
 
