@@ -21,12 +21,14 @@ public class s6_car : MonoBehaviour
     public AudioSource smash;
     public AudioClip clip;
     public Music music;
+    public SceneSwitcher sceneSwitcher;
 
 
     private void Start()
     {
         //Makes a black screen entity not show up while the player is actually playing the game
         black.SetActive(false);
+        sceneSwitcher = GameObject.FindGameObjectWithTag("SceneSwitcher").GetComponent<SceneSwitcher>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,6 +66,10 @@ public class s6_car : MonoBehaviour
             if (timer > 0.5f)
             {
                 black.SetActive(true);
+                if (timer > 1f)
+                {
+                    sceneSwitcher.switchScene = true;
+                }
             }
         }
     }
