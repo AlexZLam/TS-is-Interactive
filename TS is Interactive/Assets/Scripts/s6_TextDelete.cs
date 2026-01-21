@@ -1,3 +1,11 @@
+/*
+ * File Name: s6_TextDelete.cs
+ * Author: Jackson LeClaire
+ * DigiPen Email: jackson.leclaire@digipen.edu
+ * Course: WANIC Computer Programming Year 1
+ * 
+ * Description: Literally just deletes text after a set period of time
+ */
 using UnityEngine;
 
 public class s6_TextDelete : MonoBehaviour

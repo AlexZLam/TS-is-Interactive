@@ -1,4 +1,12 @@
-using Unity.VisualScripting;
+/*
+ * File Name: s6_gameManager.cs
+ * Author: Diana Everman, Jackson LeClaire
+ * DigiPen Email: diana.everman@digipen.edu, jackson.leclaire@digipen.edu
+ * Course: WANIC Computer Programming Year 1
+ * 
+ * Description: A game manager, functions include detecting different types of objects
+ *              in the player's view and displaying text for a time
+ */
 using UnityEngine;
 
 public class s6_GameManager : MonoBehaviour
@@ -18,6 +26,8 @@ public class s6_GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Confirms that the text display object is active and checks to confirm that there is a 
+        // TextMeshProUGUI
         text_display_obj.SetActive(true);
         text_display = text_display_obj.GetComponent<TMPro.TextMeshProUGUI>();
         if (text_display == null)
@@ -32,10 +42,6 @@ public class s6_GameManager : MonoBehaviour
     {
         if (level_done == false)
         {
-            if (obj_in_view == player)
-            {
-                obj_in_view = null;
-            }
             //if left mouse button clicked
             if (Input.GetMouseButtonDown(0))
             {
@@ -74,7 +80,7 @@ public class s6_GameManager : MonoBehaviour
             }
         }
     }
-
+    // Instantiates a text object to show and delete
     void displayText(string text)
     {
         text_display.text = text;

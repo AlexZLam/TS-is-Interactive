@@ -1,6 +1,14 @@
+/*
+ * File Name: s6_playCrash.cs
+ * Author: Jackson LeClaire
+ * DigiPen Email: jackson.leclaire@digipen.edu
+ * Course: WANIC Computer Programming Year 1
+ * 
+ * Description: Plays a crash audio and pans it according to where the "car" is
+ */
 using UnityEngine;
 
-public class s6_playcrash : MonoBehaviour
+public class s6_playCrash : MonoBehaviour
 {
     public AudioSource audio;
     public AudioClip clip;
@@ -11,6 +19,7 @@ public class s6_playcrash : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            //Observes when a player enters the trigger area
             can = true;
             audio.PlayOneShot(clip);
         }

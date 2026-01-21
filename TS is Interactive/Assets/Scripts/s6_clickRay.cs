@@ -1,3 +1,13 @@
+/****************************************************************************
+* File Name: s2_clickRay.cs
+* Author: Diana Everman
+* DigiPen Email: diana.everman@digipen.edu
+* Course: Video Game Programming Year 1
+*
+* Description: this script makes a raycast out from the pov camera that updates 
+*              every frame and changes the gamemanager's obj_in_view variable
+*              if the object that the raycast hit changes.
+****************************************************************************/
 using UnityEngine;
 
 public class s6_clickRay : MonoBehaviour

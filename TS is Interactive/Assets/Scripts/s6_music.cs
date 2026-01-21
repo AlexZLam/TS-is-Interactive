@@ -1,3 +1,11 @@
+/*
+ * File Name: s6_music.cs
+ * Author: Jackson LeClaire
+ * DigiPen Email: jackson.leclaire@digipen.edu
+ * Course: WANIC Computer Programming Year 1
+ * 
+ * Description: Activates a shell "Spotify" to play music to the player
+ */
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +31,9 @@ public class Music : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //Confirms that the Spotify overlay is not active
         overlay.SetActive(false);
+        //Shuffles the songs
         songSelect = Random.Range(0, 4);
     }
 
@@ -31,6 +41,7 @@ public class Music : MonoBehaviour
     void Update()
     {
         cooldown += Time.deltaTime;
+        // Plays an animation and starts the music
         if (glasses == true)
         {
             flyIn.SetBool("animate", true);
@@ -38,7 +49,7 @@ public class Music : MonoBehaviour
             overlay.SetActive(true);
         }
     }
-
+    // Controls the music playing at any given time
     private void musicController()
     {
         if (AudioSource.isPlaying == false)
