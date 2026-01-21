@@ -1,3 +1,11 @@
+/****************************************************************************
+* File Name: Walkiing
+* Author: Alexander Lam
+* DigiPen Email: alexander.lam@digipen.edu
+* Course: Video Game Programming Year 1
+*
+* Description: Plays footstep noises that are synched with the player controller
+****************************************************************************/
 using UnityEngine;
 
 public class PlayerFootsteps : MonoBehaviour
@@ -16,6 +24,13 @@ public class PlayerFootsteps : MonoBehaviour
     // References to your movement script
     public BasicFPCC movement;
 
+
+        /****************************************************************************
+    * Function: Update
+    *
+    * Description: Chekcs if the footsteps can be played. If the player is not doing any action besides walking, it will play footsteps every half second
+    *
+    ****************************************************************************/
     void Update()
     {
         if (movement == null) return;
