@@ -3,7 +3,7 @@
  * Author: Nathen Mattis
  * Email: 1119065@lwsd.org
  * Course: Video Game Programming I
- * Last edited: 1/16/2026
+ * Last edited: 1/21/2026
  *
  * Description: Stores extra information for interactable objects
  ********************************************************************/
@@ -25,6 +25,9 @@ public class s4_objectInfo : MonoBehaviour
     public string playerCaption_3;
 
     public string objectName;
+
+    public bool removesBorder;
+    public bool triggersErvil;
 
     [Header("Optional")]
     public string objectCaption_1;
