@@ -1,3 +1,11 @@
+/****************************************************************************
+* File Name: SceneSwitcher
+* Author: Alexander Lam
+* DigiPen Email: alexander.lam@digipen.edu
+* Course: Video Game Programming Year 1
+*
+* Description: Switches scenes
+****************************************************************************/
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +22,7 @@ public class SceneSwitcher : MonoBehaviour
     public bool switchScene = false;
     Scene currentScene;
 
+    //Checks if there is another sceneSwitcher and deletes it if it exists
     private void Awake()
     {
         // Prevent duplicates when loading new scenes
@@ -27,37 +36,38 @@ public class SceneSwitcher : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    //LoadScene 1
     public void LoadScene1()
     {
         SceneManager.LoadScene(scene1);
     }
-
+    //LoadScene 2
     public void LoadScene2()
     {
         SceneManager.LoadScene(scene2);
     }
-
+    //LoadScene 3
     public void LoadScene3()
     {
         SceneManager.LoadScene(scene3);
     }
-
+    //LoadScene 4
     public void LoadScene4()
     {
         SceneManager.LoadScene(scene4);
     }
+    //LoadScene 5
     public void LoadScene5()
     {
         SceneManager.LoadScene(scene6);
     }
-
+    //LoadScene 6
     public void LoadSceneByIndex(int index)
     {
         SceneManager.LoadScene(index);
     }
 
-
+    //Opens scenes in set order when switchScene is true
     private void Update()
     {
         currentScene = SceneManager.GetActiveScene();
