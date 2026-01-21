@@ -3,11 +3,12 @@
  * Author: Nathen Mattis
  * Email: 1119065@lwsd.org
  * Course: Video Game Programming I
- * Last edited: 1/15/2026
+ * Last edited: 1/21/2026
  *
  * Description: Changes texts of the object we are hovering over,
  * the text of the different ai prompts, the ai response, triggers
- * the enter/exit animations of the ai response and ai prompts, 
+ * the enter/exit animations of the ai response and ai prompts, and
+ * activates/deactivates the world border
  ********************************************************************/
 using UnityEngine;
 
@@ -50,6 +51,7 @@ public class s4_gameManager : MonoBehaviour
     [Header("Animators")]
     public Animator options_Animator;
     public Animator aiResponse_Animator;
+    public Animator ervil_Animator;
 
     [Header("Time Variables")]
     public float responseScreenTime;
@@ -63,14 +65,15 @@ public class s4_gameManager : MonoBehaviour
     [Header("Others")]
     public GameObject objectInView;
     public GameObject aiMapImage;
-    public bool funButtonThatDoesNothing; //every codespace needs one
+    public GameObject border;
 
     private bool triggerAiResponse = false;
     private bool promptIsShown = false;
     private bool objectHasCaptions = false;
     private bool runningPrompt = false; // a bool to make sure no variables change while a prompt is being processed
+    private bool bordersActive = true;
     private int captionsToDisplay; // an int number of how many captions will run during caption events (usually 1)
-    private int promptToRun = 0; 
+    private int promptToRun = 0;
 
     // Checks if we have the different text objects & yells at us if we dont
     void Start()
@@ -103,9 +106,30 @@ public class s4_gameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    /********************************************************************
+    * Function: Update
+    *
+    * Description: Handles player inputs, defaulting/changing strings, and
+    * runs timers for how long captions and the ai response should stay
+    * on screen for. Any outputs are handled through triggering other 
+    * functions.
+    *
+    * Inputs: None
+    *
+    * Outputs: None
+    *********************************************************************/
     void Update()
     {
+        if (bordersActive && objectInView != null)
+        {
+            // if removesBorder is true, turns off the border objects
+            if (objectInView.GetComponent<s4_objectInfo>().removesBorder)
+            {
+                border.SetActive(false);
+                bordersActive = false;
+            }
+        }
+
         // Updating prompts & responses 1-3 depending on if we are looking at an object or not
         if (objectInView != null && !runningPrompt /*&& promptOptionOne == defaultOptionOne && responseOptionOne == defaultResponseOne
                 && captionOne == defaultOptionOne*/)
@@ -123,7 +147,7 @@ public class s4_gameManager : MonoBehaviour
             responseOptionTwo = objectInView.GetComponent<s4_objectInfo>().aiResponse_2;
             responseOptionThree = objectInView.GetComponent<s4_objectInfo>().aiResponse_3;
 
-            // if the object will talk
+            // if the object will talk (scrapped idea for now)
             if (objectInView.GetComponent<s4_objectInfo>().hasCaptions)
             {
                 objectHasCaptions = true;
@@ -215,6 +239,12 @@ public class s4_gameManager : MonoBehaviour
 
                     runCaptionTimer = true;
                     //Debug.Log("running object captions");
+                }
+
+                // animates ervil if we are interacting with the npc and ask its name
+                if (promptOptionOne == "Name?")
+                {
+                    triggerErvilAnim();
                 }
 
                 // ai response variables
@@ -368,6 +398,18 @@ public class s4_gameManager : MonoBehaviour
         }
     }
 
+    /********************************************************************
+    * Function: captioning
+    *
+    * Description: Edits the "captions" text object depending on who is
+    * set to talk, as well as turning on the text object in order for
+    * it to be visible.
+    *
+    * Inputs: captionText (the new text to be displayed) and personTalking
+    * (the label for who is talking)
+    *
+    * Outputs: New text display
+    *********************************************************************/
     public void captioning(string captionText, string personTalking)
     {
         if (personTalking == "Player")
@@ -382,7 +424,19 @@ public class s4_gameManager : MonoBehaviour
         caption_display_obj.SetActive(true);
     }
 
-    // Displays the object that the player is currently hovering over (as long as it is interactable)
+    /********************************************************************
+    * Function: objectHoverDisplay
+    *
+    * Description: Displays new text on what object the player is currently
+    * hovering over, so long as it has the "Interactable" tag attached to
+    * it.
+    *
+    * Inputs: isHoveringOnObj, which is used to either A) update the text
+    * to display the name of the object if it is true or B) default the
+    * text to say that the player is hovering over nothing if it is false
+    *
+    * Outputs: New text display
+    *********************************************************************/
     public void objectHoverDisplay(bool isHoveringOnObj)
     {
         if (isHoveringOnObj)
@@ -399,6 +453,18 @@ public class s4_gameManager : MonoBehaviour
         }
     }
 
+    /********************************************************************
+    * Function: togglePrompts
+    *
+    * Description: Disables and enables the "press e to interact with ai"
+    * prompt options game object (running the animator for on and off 
+    * screen)
+    *
+    * Inputs: promptIsShown, which will make the object enter if true or
+    * make the object exit if false
+    *
+    * Outputs: Show/hide display
+    *********************************************************************/
     private void togglePrompts(bool promptIsShown)
     {
         if (!promptIsShown)
@@ -411,11 +477,34 @@ public class s4_gameManager : MonoBehaviour
         }
     }
 
+    /********************************************************************
+    * Function: changeOptionsText
+    *
+    * Description: Changes the prompts given to you, which is activated
+    * when the options change
+    *
+    * Inputs: strings of each 3 options
+    *
+    * Outputs: New text display
+    *********************************************************************/
     private void changeOptionsText(string optionOne, string optionTwo, string optionThree)
     {
         options_text.text = "[1] " + optionOne + "\n[2] " + optionTwo + "\n[3] " + optionThree;
     }
 
+    /********************************************************************
+    * Function: changeAiResponse
+    *
+    * Description: Changes the text of the "AI" that appears on screen
+    * after choosing a prompt, depending on the prompt the user chose.
+    * Also activates the animator to make the response be shown, but 
+    * does not tell the animator to then hide the ai response (that is 
+    * taken care of in the ai timer in the update function)
+    *
+    * Inputs: string textToDisplay
+    *
+    * Outputs: New text display, display the ai response
+    *********************************************************************/
     private void changeAiResponseText(string textToDisplay)
     {
         // turns off the prompts display
@@ -437,7 +526,26 @@ public class s4_gameManager : MonoBehaviour
         // shows the ai response
         aiResponse_Animator.SetBool("aiEnter", true);
 
-        runResponseTimer = true;
+        // tells the update function we dont need to run this
+        // function again because we just did
         triggerAiResponse = false;
+
+        // timer stuff
+        runResponseTimer = true;
+    }
+
+    /********************************************************************
+    * Function: triggerErvilAnim
+    *
+    * Description: Tells the ervil animator to send its image across the 
+    * screen (a picture of ervil lebaron)
+    *
+    * Inputs: None
+    *
+    * Outputs: Image that drags along the screen 
+    *********************************************************************/
+    private void triggerErvilAnim()
+    {
+        ervil_Animator.SetBool("enterErvil", true);
     }
 }
