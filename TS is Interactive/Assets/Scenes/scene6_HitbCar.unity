@@ -752,6 +752,10 @@ PrefabInstance:
       propertyPath: lilAnimator
       value: 
       objectReference: {fileID: 246116715}
+    - target: {fileID: 4698316187044647570, guid: 6d36b5a64ffdd2e4aa220490acd33a1f, type: 3}
+      propertyPath: canvasAnimator
+      value: 
+      objectReference: {fileID: 246116715}
     - target: {fileID: 6504117835498628038, guid: 6d36b5a64ffdd2e4aa220490acd33a1f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
